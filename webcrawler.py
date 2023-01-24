@@ -1,6 +1,7 @@
 import requests
 import json
 from datetime import datetime
+
 print('start')
 # Get the current time.
 now=datetime.now()
@@ -26,4 +27,8 @@ for row in jayson ['data']['Rows'] :
         # Format output.
         reverse = now.strftime('%Y-%m-%d')
         msg=reverse + ' ' + sSplit [1] + ' - ' + reverse + ' ' + eSplit [1] + ' ' + 'Value: ' + dayData[ 'Value']
-        print (msg)
+        print (dayData['Value'])
+
+        # y=[]
+        # y.append(dayData['Value'])
+        # print (y)
