@@ -1,9 +1,4 @@
-INSERT INTO `electricityprice`.`electricity`
+INSERT INTO `electricity`
 (`name`)
 VALUES
-("nordpool");
-
-INSERT INTO `electricityprice`.`electricity`
-(`name`)
-VALUES
-("LV Fixed price");
+("Nordpool");

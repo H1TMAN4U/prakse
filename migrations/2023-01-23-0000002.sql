@@ -1,10 +1,7 @@
 create table prices(
-	`start_time` datetime not null,
-    `end_time` datetime not null,
+	`start_time` varchar(100)  not null,
+    `end_time` varchar(100) not null,
     `electricity_id` int not null,
-	foreign key(electricity_id) references Electricity(id),
-    `price` varchar(45) not null
+	foreign key(`electricity_id`) references `Electricity`(`id`),
+    `price` float not null
 );
-
-insert into prices (`startime`,`endtime`,`electricity_id`,`price`)
-values (now(),now(),2,"0.27");

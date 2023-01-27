@@ -1,0 +1,243 @@
+2023-01-27 12:12:53,987 - INFO - migrations : DB migration service
+2023-01-27 12:12:53,987 - INFO - migrations : Loading configuration from file
+2023-01-27 12:12:53,993 - INFO - migrations : DONE
+2023-01-27 12:12:54,038 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:12:54,040 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:12:54,339 - INFO - migrations : Executing: 2023-01-23-0000001.sql
+2023-01-27 12:12:54,731 - INFO - migrations : None
+2023-01-27 12:12:54,767 - INFO - migrations : OK
+2023-01-27 12:12:54,771 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 12:12:54,941 - INFO - migrations : None
+2023-01-27 12:18:53,380 - INFO - migrations : DB migration service
+2023-01-27 12:18:53,380 - INFO - migrations : Loading configuration from file
+2023-01-27 12:18:53,392 - INFO - migrations : DONE
+2023-01-27 12:18:53,448 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:18:53,449 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:18:53,455 - ERROR - migrations : CREATE TABLE `migration` ( `id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(255), `exec_ts` INT(10), `exec_dt` varchar(20), PRIMARY KEY (`id`))
+2023-01-27 12:18:53,456 - ERROR - migrations : Problem creating migration table in DB: 1050 (42S01): Table 'migration' already exists
+2023-01-27 12:18:53,461 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 12:18:53,463 - ERROR - migrations : create table prices(
+	`start_time` datetime not null,
+    `end_time` datetime not null,
+    `electricity_id` int not null,
+	foreign key(electricity_id) references Electricity(id),
+    `price` float not null
+);
+
+
+2023-01-27 12:18:53,464 - ERROR - migrations : Problem executing sql query on DB: 1050 (42S01): Table 'prices' already exists
+2023-01-27 12:18:53,465 - ERROR - migrations : Problem applying migration. Aborting
+2023-01-27 12:18:53,466 - INFO - migrations : No migrations to execute
+2023-01-27 12:19:27,450 - INFO - migrations : DB migration service
+2023-01-27 12:19:27,450 - INFO - migrations : Loading configuration from file
+2023-01-27 12:19:27,451 - INFO - migrations : DONE
+2023-01-27 12:19:27,499 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:19:27,500 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:19:27,793 - INFO - migrations : Executing: 2023-01-23-0000001.sql
+2023-01-27 12:19:27,904 - INFO - migrations : None
+2023-01-27 12:19:27,939 - INFO - migrations : OK
+2023-01-27 12:19:27,945 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 12:19:28,086 - INFO - migrations : None
+2023-01-27 12:19:28,151 - INFO - migrations : OK
+2023-01-27 12:19:28,156 - INFO - migrations : Executing: 2023-01-24-0000000.sql
+2023-01-27 12:19:28,188 - INFO - migrations : None
+2023-01-27 12:19:28,256 - INFO - migrations : OK
+2023-01-27 12:19:28,259 - INFO - migrations : Executing: 2023-01-24-0000001.sql
+2023-01-27 12:19:28,261 - INFO - migrations : None
+2023-01-27 12:19:28,317 - INFO - migrations : OK
+2023-01-27 12:19:28,320 - INFO - migrations : Executing: 2023-01-24-0000003.sql
+2023-01-27 12:19:28,767 - INFO - migrations : None
+2023-01-27 12:19:28,935 - INFO - migrations : OK
+2023-01-27 12:19:28,951 - INFO - migrations : Executing: 2023-01-24-0000004.sql
+2023-01-27 12:19:28,964 - ERROR - migrations : insert into prices (`start_time`,`end_time`,`electricity_id`,`price`)
+values (now(),now(),2,"0.27");
+2023-01-27 12:19:28,966 - ERROR - migrations : Problem executing sql query on DB: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`electricity_db`.`prices`, CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`electricity_id`) REFERENCES `electricity` (`id`))
+2023-01-27 12:19:28,967 - ERROR - migrations : Problem applying migration. Aborting
+2023-01-27 12:25:25,834 - INFO - migrations : DB migration service
+2023-01-27 12:25:25,849 - INFO - migrations : Loading configuration from file
+2023-01-27 12:25:25,851 - INFO - migrations : DONE
+2023-01-27 12:25:25,905 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:25:25,906 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:25:25,914 - ERROR - migrations : CREATE TABLE `migration` ( `id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(255), `exec_ts` INT(10), `exec_dt` varchar(20), PRIMARY KEY (`id`))
+2023-01-27 12:25:25,914 - ERROR - migrations : Problem creating migration table in DB: 1050 (42S01): Table 'migration' already exists
+2023-01-27 12:25:25,920 - INFO - migrations : Executing: 2023-01-23-0000003.sql
+2023-01-27 12:25:25,921 - ERROR - migrations : create table electricity_used(
+	`start_time` datetime not null,
+    `end_time` datetime not null,
+    `used` float not null,
+
+
+2023-01-27 12:25:25,922 - ERROR - migrations : Problem executing sql query on DB: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+2023-01-27 12:25:25,923 - ERROR - migrations : Problem applying migration. Aborting
+2023-01-27 12:25:25,924 - INFO - migrations : No migrations to execute
+2023-01-27 12:25:54,019 - INFO - migrations : DB migration service
+2023-01-27 12:25:54,019 - INFO - migrations : Loading configuration from file
+2023-01-27 12:25:54,021 - INFO - migrations : DONE
+2023-01-27 12:25:54,062 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:25:54,064 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:25:54,316 - INFO - migrations : Executing: 2023-01-23-0000001.sql
+2023-01-27 12:25:54,431 - INFO - migrations : None
+2023-01-27 12:25:54,465 - INFO - migrations : OK
+2023-01-27 12:25:54,475 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 12:25:54,631 - INFO - migrations : None
+2023-01-27 12:25:54,677 - INFO - migrations : OK
+2023-01-27 12:25:54,682 - INFO - migrations : Executing: 2023-01-23-0000003.sql
+2023-01-27 12:25:54,684 - ERROR - migrations : create table electricity_used(
+	`start_time` datetime not null,
+    `end_time` datetime not null,
+    `used` float not null,
+
+
+2023-01-27 12:25:54,686 - ERROR - migrations : Problem executing sql query on DB: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+2023-01-27 12:25:54,687 - ERROR - migrations : Problem applying migration. Aborting
+2023-01-27 12:27:14,817 - INFO - migrations : DB migration service
+2023-01-27 12:27:14,817 - INFO - migrations : Loading configuration from file
+2023-01-27 12:27:14,826 - INFO - migrations : DONE
+2023-01-27 12:27:14,871 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:27:14,872 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:27:15,133 - INFO - migrations : Executing: 2023-01-23-0000001.sql
+2023-01-27 12:27:15,244 - INFO - migrations : None
+2023-01-27 12:27:15,281 - INFO - migrations : OK
+2023-01-27 12:27:15,285 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 12:27:15,426 - INFO - migrations : None
+2023-01-27 12:27:15,471 - INFO - migrations : OK
+2023-01-27 12:27:15,477 - INFO - migrations : Executing: 2023-01-23-0000003.sql
+2023-01-27 12:27:15,590 - INFO - migrations : None
+2023-01-27 12:27:15,626 - INFO - migrations : OK
+2023-01-27 12:27:15,631 - INFO - migrations : Executing: 2023-01-24-0000000.sql
+2023-01-27 12:27:15,633 - INFO - migrations : None
+2023-01-27 12:27:15,710 - INFO - migrations : OK
+2023-01-27 12:27:15,714 - INFO - migrations : Executing: 2023-01-24-0000001.sql
+2023-01-27 12:27:15,716 - INFO - migrations : None
+2023-01-27 12:27:15,809 - INFO - migrations : OK
+2023-01-27 12:27:15,823 - INFO - migrations : Executing: 2023-01-24-0000003.sql
+2023-01-27 12:27:16,337 - INFO - migrations : None
+2023-01-27 12:27:16,418 - INFO - migrations : OK
+2023-01-27 12:27:16,423 - INFO - migrations : Executing: 2023-01-24-0000004.sql
+2023-01-27 12:27:16,430 - ERROR - migrations : insert into prices (`start_time`,`end_time`,`electricity_id`,`price`)
+values (now(),now(),2,"0.27");
+2023-01-27 12:27:16,431 - ERROR - migrations : Problem executing sql query on DB: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`electricity_db`.`prices`, CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`electricity_id`) REFERENCES `electricity` (`id`))
+2023-01-27 12:27:16,432 - ERROR - migrations : Problem applying migration. Aborting
+2023-01-27 12:31:45,377 - INFO - migrations : DB migration service
+2023-01-27 12:31:45,377 - INFO - migrations : Loading configuration from file
+2023-01-27 12:31:45,381 - INFO - migrations : DONE
+2023-01-27 12:31:45,437 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:31:45,438 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:31:45,444 - ERROR - migrations : CREATE TABLE `migration` ( `id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(255), `exec_ts` INT(10), `exec_dt` varchar(20), PRIMARY KEY (`id`))
+2023-01-27 12:31:45,445 - ERROR - migrations : Problem creating migration table in DB: 1050 (42S01): Table 'migration' already exists
+2023-01-27 12:31:45,461 - INFO - migrations : Executing: 2023-01-24-0000004.sql
+2023-01-27 12:31:45,478 - ERROR - migrations : insert into `prices` (`start_time`,`end_time`,`electricity_id`,`price`)
+values (now(),now(),2,"0.27");
+2023-01-27 12:31:45,479 - ERROR - migrations : Problem executing sql query on DB: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`electricity_db`.`prices`, CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`electricity_id`) REFERENCES `electricity` (`id`))
+2023-01-27 12:31:45,481 - ERROR - migrations : Problem applying migration. Aborting
+2023-01-27 12:31:45,482 - INFO - migrations : No migrations to execute
+2023-01-27 12:38:32,701 - INFO - migrations : DB migration service
+2023-01-27 12:38:32,701 - INFO - migrations : Loading configuration from file
+2023-01-27 12:38:32,702 - INFO - migrations : DONE
+2023-01-27 12:38:32,744 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:38:32,746 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:38:32,750 - ERROR - migrations : CREATE TABLE `migration` ( `id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(255), `exec_ts` INT(10), `exec_dt` varchar(20), PRIMARY KEY (`id`))
+2023-01-27 12:38:32,751 - ERROR - migrations : Problem creating migration table in DB: 1050 (42S01): Table 'migration' already exists
+2023-01-27 12:38:32,761 - INFO - migrations : Executing: 2023-01-24-0000004.sql
+2023-01-27 12:38:32,763 - ERROR - migrations : insert into `prices` (`start_time`,`end_time`,`electricity_id`,`price`)
+values (now(),now(),2,"0.27");
+2023-01-27 12:38:32,764 - ERROR - migrations : Problem executing sql query on DB: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`electricity_db`.`prices`, CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`electricity_id`) REFERENCES `electricity` (`id`))
+2023-01-27 12:38:32,765 - ERROR - migrations : Problem applying migration. Aborting
+2023-01-27 12:38:32,765 - INFO - migrations : No migrations to execute
+2023-01-27 12:39:46,038 - INFO - migrations : DB migration service
+2023-01-27 12:39:46,038 - INFO - migrations : Loading configuration from file
+2023-01-27 12:39:46,040 - INFO - migrations : DONE
+2023-01-27 12:39:46,087 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:39:46,088 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:39:46,224 - INFO - migrations : Executing: 2023-01-23-0000001.sql
+2023-01-27 12:39:46,536 - INFO - migrations : None
+2023-01-27 12:39:46,658 - INFO - migrations : OK
+2023-01-27 12:39:46,670 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 12:39:47,137 - INFO - migrations : None
+2023-01-27 12:39:47,170 - INFO - migrations : OK
+2023-01-27 12:39:47,177 - INFO - migrations : Executing: 2023-01-23-0000003.sql
+2023-01-27 12:39:47,341 - INFO - migrations : None
+2023-01-27 12:39:47,378 - INFO - migrations : OK
+2023-01-27 12:39:47,383 - INFO - migrations : Executing: 2023-01-24-0000000.sql
+2023-01-27 12:39:47,386 - INFO - migrations : None
+2023-01-27 12:39:47,439 - INFO - migrations : OK
+2023-01-27 12:39:47,443 - INFO - migrations : Executing: 2023-01-24-0000001.sql
+2023-01-27 12:39:47,445 - INFO - migrations : None
+2023-01-27 12:39:47,500 - INFO - migrations : OK
+2023-01-27 12:39:47,505 - INFO - migrations : Executing: 2023-01-24-0000003.sql
+2023-01-27 12:39:47,659 - INFO - migrations : None
+2023-01-27 12:39:47,701 - INFO - migrations : OK
+2023-01-27 12:39:47,707 - INFO - migrations : Executing: 2023-01-24-0000004.sql
+2023-01-27 12:39:47,714 - ERROR - migrations : insert into `prices` (`start_time`,`end_time`,`electricity_id`,`price`)
+values (now(),now(),2,"0.27");
+2023-01-27 12:39:47,715 - ERROR - migrations : Problem executing sql query on DB: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`electricity_db`.`prices`, CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`electricity_id`) REFERENCES `electricity` (`id`))
+2023-01-27 12:39:47,716 - ERROR - migrations : Problem applying migration. Aborting
+2023-01-27 12:48:37,612 - INFO - migrations : DB migration service
+2023-01-27 12:48:37,613 - INFO - migrations : Loading configuration from file
+2023-01-27 12:48:37,614 - INFO - migrations : DONE
+2023-01-27 12:48:37,662 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:48:37,664 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:48:37,918 - INFO - migrations : Executing: 2023-01-23-0000001.sql
+2023-01-27 12:48:38,121 - INFO - migrations : None
+2023-01-27 12:48:38,157 - INFO - migrations : OK
+2023-01-27 12:48:38,178 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 12:48:38,370 - INFO - migrations : None
+2023-01-27 12:48:38,402 - INFO - migrations : OK
+2023-01-27 12:48:38,408 - INFO - migrations : Executing: 2023-01-24-0000000.sql
+2023-01-27 12:48:38,414 - INFO - migrations : None
+2023-01-27 12:48:38,485 - INFO - migrations : OK
+2023-01-27 12:48:38,496 - INFO - migrations : Executing: 2023-01-24-0000001.sql
+2023-01-27 12:48:38,501 - INFO - migrations : None
+2023-01-27 12:48:38,583 - INFO - migrations : OK
+2023-01-27 12:48:38,589 - INFO - migrations : Executing: 2023-01-24-0000003.sql
+2023-01-27 12:48:39,386 - INFO - migrations : None
+2023-01-27 12:48:39,433 - INFO - migrations : OK
+2023-01-27 12:48:39,442 - INFO - migrations : Executing: 2023-01-24-0000004.sql
+2023-01-27 12:48:39,660 - INFO - migrations : None
+2023-01-27 12:48:39,709 - INFO - migrations : OK
+2023-01-27 12:49:49,196 - INFO - migrations : DB migration service
+2023-01-27 12:49:49,196 - INFO - migrations : Loading configuration from file
+2023-01-27 12:49:49,211 - INFO - migrations : DONE
+2023-01-27 12:49:49,260 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 12:49:49,261 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 12:49:49,395 - INFO - migrations : Executing: 2023-01-23-0000001.sql
+2023-01-27 12:49:49,505 - INFO - migrations : None
+2023-01-27 12:49:49,540 - INFO - migrations : OK
+2023-01-27 12:49:49,547 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 12:49:49,718 - INFO - migrations : None
+2023-01-27 12:49:49,752 - INFO - migrations : OK
+2023-01-27 12:49:49,756 - INFO - migrations : Executing: 2023-01-24-0000000.sql
+2023-01-27 12:49:49,758 - INFO - migrations : None
+2023-01-27 12:49:49,812 - INFO - migrations : OK
+2023-01-27 12:49:49,816 - INFO - migrations : Executing: 2023-01-24-0000001.sql
+2023-01-27 12:49:49,817 - INFO - migrations : None
+2023-01-27 12:49:49,872 - INFO - migrations : OK
+2023-01-27 12:49:49,876 - INFO - migrations : Executing: 2023-01-24-0000003.sql
+2023-01-27 12:49:50,011 - INFO - migrations : None
+2023-01-27 12:49:50,052 - INFO - migrations : OK
+2023-01-27 12:49:50,055 - INFO - migrations : Executing: 2023-01-24-0000004.sql
+2023-01-27 12:49:50,146 - INFO - migrations : None
+2023-01-27 12:49:50,195 - INFO - migrations : OK
+2023-01-27 14:28:03,540 - INFO - migrations : DB migration service
+2023-01-27 14:28:03,554 - INFO - migrations : Loading configuration from file
+2023-01-27 14:28:03,556 - INFO - migrations : DONE
+2023-01-27 14:28:03,608 - INFO - migrations : Connecting to MySQL DB
+2023-01-27 14:28:03,609 - INFO - migrations : Connected to MySQL database. MySQL Server version on 8.0.32
+2023-01-27 14:28:03,789 - INFO - migrations : Executing: 2023-01-23-0000001.sql
+2023-01-27 14:28:03,891 - INFO - migrations : None
+2023-01-27 14:28:03,915 - INFO - migrations : OK
+2023-01-27 14:28:03,920 - INFO - migrations : Executing: 2023-01-23-0000002.sql
+2023-01-27 14:28:04,060 - INFO - migrations : None
+2023-01-27 14:28:04,095 - INFO - migrations : OK
+2023-01-27 14:28:04,099 - INFO - migrations : Executing: 2023-01-24-0000000.sql
+2023-01-27 14:28:04,104 - INFO - migrations : None
+2023-01-27 14:28:04,155 - INFO - migrations : OK
+2023-01-27 14:28:04,158 - INFO - migrations : Executing: 2023-01-24-0000001.sql
+2023-01-27 14:28:04,160 - INFO - migrations : None
+2023-01-27 14:28:04,215 - INFO - migrations : OK
+2023-01-27 14:28:04,219 - INFO - migrations : Executing: 2023-01-24-0000003.sql
+2023-01-27 14:28:04,370 - INFO - migrations : None
+2023-01-27 14:28:04,405 - INFO - migrations : OK
+2023-01-27 14:28:04,410 - INFO - migrations : Executing: 2023-01-24-0000004.sql
+2023-01-27 14:28:04,535 - INFO - migrations : None
+2023-01-27 14:28:04,559 - INFO - migrations : OK

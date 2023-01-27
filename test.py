@@ -11,24 +11,24 @@ logger = logging.getLogger('root')
 
 prices=select_prices()
 consumption=select_consumption()
+print(consumption)
+# fixed_cost=float(config.get('fixed_price','fixed_LV_price'))
+# print(fixed_cost)
 
-fixed_cost=float(config.get('fixed_price','fixed_LV_price'))
-print(fixed_cost)
-
-# automaticsaving(prices,consumption)
+# # automaticsaving(prices,consumption)
 
 
-nord_price=[]
-fixed_price=[]
-usage_array=[]
+# nord_price=[]
+# fixed_price=[]
+# usage_array=[]
 
-mycursor = connection.cursor()
-mycursor.execute("SELECT price FROM prices;")
-prices_table = mycursor.fetchall()
-for price in prices_table: 
-    nord_price.append(price[0])
-print(nord_price)
+# mycursor = connection.cursor()
+# mycursor.execute("SELECT price FROM prices;")
+# prices_table = mycursor.fetchall()
+# for price in prices_table: 
+#     nord_price.append(price[0])
+# print(nord_price)
 
-# print(nord_price*fixed_cost)
+# # print(nord_price*fixed_cost)
 
-# print(saved_EUR)
+# # print(saved_EUR)

@@ -1,6 +1,4 @@
-
-
-INSERT INTO `electricityprice`.`electricity`
+INSERT INTO `electricity`
 (`name`)
 VALUES
 ("LV Fixed price");

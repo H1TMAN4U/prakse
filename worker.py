@@ -7,12 +7,12 @@ mysql_config_mysql_user = config.get('mysql_config', 'mysql_user')
 mysql_config_mysql_pass = config.get('mysql_config', 'mysql_pass')
 connection = mysql.connector.connect(host=mysql_config_mysql_host, database=mysql_config_mysql_db, user=mysql_config_mysql_user, password=mysql_config_mysql_pass)
 logger = logging.getLogger('root')
-def insert_nordpool_prices(starttime,endtime,price):
+def insert_nordpool_prices(starttime,end_time,price):
     try:
         cursor = connection.cursor()
-        mySql_insert_query = """INSERT INTO prices (`startime`,`endtime`,price,electricty_id) 
+        mySql_insert_query = """INSERT INTO prices (`start_time`,`end_time`,price,electricty_id) 
 	                                            VALUES (%s, %s, %s,%s) """       
-        record = (starttime,endtime,price,1)
+        record = (starttime,end_time,price,1)
         cursor.execute(mySql_insert_query, record)
         connection.commit()
         logger.info(" inserted successfully in current")    
@@ -30,7 +30,7 @@ def select_prices():
         # Iepriekšējais string datu tips tiek mainīts uz datetime datu tipu, ar iepriekš iznāmu formātu
         datetime_object = datetime.strptime(dateOfInterest, '%Y-%m-%d')
         # Tiek izveidots query, ar mainīgo kas tiks nākamajā ievadīts
-        sql_select_Query = "select startime,endtime,price,electricty_id from prices where left(startime,10)= left(%s,10)"
+        sql_select_Query = "select start_time,end_time,price,electricty_id from prices where left(start_time,10)= left(%s,10)"
         # Sagatavo savienojumu ar datubazi un python
         cursor = connection.cursor()
         # Palaiz izveidoto query ar izveidotiem datiem
@@ -43,13 +43,13 @@ def select_prices():
         # Izvada kļūdas ja ir
         logger.error("Error using select_prices", e)
 
-def create_consumtion(startime,endtime):
+def create_consumtion(start_time,end_time):
     try:
         cursor = connection.cursor()
         consumntion=random.randint(10,100)
-        mySql_insert_query = """INSERT INTO electricity_used (`startime`,`endtime`,used) 
+        mySql_insert_query = """INSERT INTO electricity_used (`start_time`,`end_time`,used) 
 	                                            VALUES (%s, %s, %s) """       
-        record = (startime,endtime,consumntion)
+        record = (start_time,end_time,consumntion)
         cursor.execute(mySql_insert_query, record)
         connection.commit()
         logger.info(" inserted successfully")    
@@ -66,7 +66,7 @@ def select_consumption():
         # Iepriekšējais string datu tips tiek mainīts uz datetime datu tipu, ar iepriekš iznāmu formātu
         datetime_object = datetime.strptime(dateOfInterest, '%Y-%m-%d')
         # Tiek izveidots query, ar mainīgo kas tiks nākamajā ievadīts
-        sql_select_Query = "select startime,endtime,used from electricity_used where left(startime,10)= left(%s,10)"
+        sql_select_Query = "select start_time,end_time,used from electricity_used where left(start_time,10)= left(%s,10)"
         # Sagatavo savienojumu ar datubazi un python
         cursor = connection.cursor()
         # Palaiz izveidoto query ar izveidotiem datiem
@@ -95,9 +95,49 @@ def automaticsaving(prices,consumption):
         nordpool_list.append(temp_list1)
     print(nordpool_list)
     print(fixed_list)
+
+# def saved_EUR(start_time,end_time):
+#     try:
+#         fixed_usage=[]
+#         nord_usage=[]
+#         cheapest_usage=[]
+#         temp_array=[]
+#         main_array=[]
+#         fixed_cost=float(config.get('fixed_price','fixed_LV_price'))
+#         mycursor = connection.cursor()
+#         mycursor.execute("SELECT * FROM electricity_used;")
+#         electricity_used = mycursor.fetchall()
+
+#         for i in range(0,len(electricity_used)):
+#             res=(electricity_used[i][0],electricity_used[i][1],float(electricity_used[i][2])*float(fixed_cost))
+#             fixed_usage.append(res)
+#         print(fixed_usage[0])
+
+#         mycursor.execute("SELECT * FROM prices;")
+#         prices = mycursor.fetchall()
+
+#         for i in range(0,len(electricity_used)):
+#             res=(prices[i][0],prices[i][1],1,float(prices[i][3])*float(electricity_used[i][2]))
+#             nord_usage.append(res)
+#         # print(nord_usage[0])
+
+#         for i in range(0,len(nord_usage)):
+#             if nord_usage[i][0] == fixed_usage[i][0]:
+#                 if  nord_usage[i][3] < fixed_usage[i][2]:
+                    
+#                     # dif=fixed_usage[i][2] - nord_usage[i][3]
+#                     # print(dif)
+#                     cheapest_usage.append(nord_usage[i])
+#                 else:
+#                     cheapest_usage.append(fixed_usage[i])
+
+#         print(cheapest_usage)
+#     except mysql.connector.Error as e:
+#         logger.error("Error using select_consumption", e)
+
         
-        
-    
+#         ('2023-01-27 00:00:00', '2023-01-27 01:00:00', '40')
+#     ('2023-01-27 00:00:00', '2023-01-27 01:00:00', 1, 3.1424000000000003)
 
 #  Create math function from previous values
 #  Convert nordpool EUR/MWH to eur/kwh get from config constant price and amount for the hour
